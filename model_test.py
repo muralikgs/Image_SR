@@ -38,7 +38,7 @@ def model_test(x):
 
 		error = np.sum((img - HR_data[100,:,:,0])**2)
 		print(error)
-		cv2.imshow('LR',(LR_data[100,:,:,0]*255).astype(np.uint8))
+		cv2.imshow('HR',(HR_data[100,:,:,0]*255).astype(np.uint8))
 		cv2.imshow('Output', img)
 		
 		cv2.waitKey(0)

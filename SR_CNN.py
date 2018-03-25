@@ -14,9 +14,9 @@ def conv2d(x, W):
     return tf.nn.conv2d(x, W, strides=[1,1,1,1], padding='SAME', data_format='NHWC')
 
 def SR_model(x):
-    weights = {'W_conv1':tf.Variable(tf.random_normal([9,9,1,64]),dtype=tf.float32,stddev=1e-3),
-               'W_conv2':tf.Variable(tf.random_normal([1,1,64,32]),dtype=tf.float32,stddev=1e-3),
-               'W_conv3':tf.Variable(tf.random_normal([5,5,32,1]),dtype=tf.float32,stddev=1e-3)}
+    weights = {'W_conv1':tf.Variable(tf.random_normal([9,9,1,64],stddev=1e-3),dtype=tf.float32),
+               'W_conv2':tf.Variable(tf.random_normal([1,1,64,32],stddev=1e-3),dtype=tf.float32),
+               'W_conv3':tf.Variable(tf.random_normal([5,5,32,1],stddev=1e-3),dtype=tf.float32)}
 
 
     biases = {'b_conv1': tf.Variable(tf.random_normal([64])), 'b_conv2': tf.Variable(tf.random_normal([32])), 'b_conv3': tf.Variable(tf.random_normal([1]))}
@@ -31,7 +31,7 @@ def train_model(x):
 	saver = tf.train.Saver()
 	cost = tf.reduce_mean(tf.squared_difference(output,y))
 	optimizer = tf.train.RMSPropOptimizer(learning_rate=0.002).minimize(cost)	
-	hm_epochs = 100
+	hm_epochs = 25
 	with tf.Session() as sess:
 		sess.run(tf.global_variables_initializer())
 		itern = int(int(LR_data.shape[0])/batch_size)
