@@ -31,7 +31,7 @@ def train_model(x):
 	saver = tf.train.Saver()
 	cost = tf.reduce_mean(tf.squared_difference(output,y))
 	optimizer = tf.train.RMSPropOptimizer(learning_rate=0.002).minimize(cost)	
-	hm_epochs = 25
+	hm_epochs = 75
 	with tf.Session() as sess:
 		sess.run(tf.global_variables_initializer())
 		itern = int(int(LR_data.shape[0])/batch_size)
