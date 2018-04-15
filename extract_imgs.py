@@ -31,12 +31,12 @@ def unpack_data(file):
 def get_data():
 	lr1, hr1 = unpack_data('./Data_Cifar/data_batch_1') 
 	lr2, hr2 = unpack_data('./Data_Cifar/data_batch_2') 
-	#lr3, hr3 = unpack_data('./Data_Cifar/data_batch_3') 
-	#lr4, hr4 = unpack_data('./Data_Cifar/data_batch_4') 
-	#lr5, hr5 = unpack_data('./Data_Cifar/data_batch_5')
+	lr3, hr3 = unpack_data('./Data_Cifar/data_batch_3') 
+	lr4, hr4 = unpack_data('./Data_Cifar/data_batch_4') 
+	lr5, hr5 = unpack_data('./Data_Cifar/data_batch_5')
 
-	LR_data = np.concatenate([lr1,lr2], axis = 0) 
-	HR_data = np.concatenate([hr1,hr2], axis = 0)
+	LR_data = np.concatenate([lr1,lr2,lr3,lr4,lr5], axis = 0) 
+	HR_data = np.concatenate([hr1,hr2,hr3,hr4,hr5], axis = 0)
 
 	return LR_data, HR_data
 
